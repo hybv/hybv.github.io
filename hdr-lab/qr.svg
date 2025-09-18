@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="color(display-p3 1 0.4 0.1)" />
+      <stop offset="100%" stop-color="color(display-p3 0.7 0 1)" />
+    </linearGradient>
+    <linearGradient id="qr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="color(display-p3 0.2 1 0.5)" />
+      <stop offset="100%" stop-color="color(display-p3 0 0.9 1)" />
+    </linearGradient>
+  </defs>
+  <rect width="220" height="220" rx="24" fill="url(#bg)" />
+  <g fill="#05060a" opacity="0.24">
+    <circle cx="190" cy="30" r="10" />
+    <circle cx="30" cy="190" r="12" />
+  </g>
+  <g fill="url(#qr)">
+    <rect x="20" y="20" width="60" height="60" rx="12" />
+    <rect x="140" y="20" width="60" height="60" rx="12" />
+    <rect x="20" y="140" width="60" height="60" rx="12" />
+  </g>
+  <g fill="#05060a">
+    <rect x="36" y="36" width="28" height="28" rx="6" />
+    <rect x="156" y="36" width="28" height="28" rx="6" />
+    <rect x="36" y="156" width="28" height="28" rx="6" />
+  </g>
+  <g fill="url(#qr)">
+    <rect x="100" y="20" width="20" height="20" rx="4" />
+    <rect x="120" y="60" width="20" height="20" rx="4" />
+    <rect x="80" y="60" width="20" height="20" rx="4" />
+    <rect x="100" y="100" width="20" height="20" rx="4" />
+    <rect x="120" y="120" width="20" height="20" rx="4" />
+    <rect x="80" y="140" width="20" height="20" rx="4" />
+    <rect x="100" y="160" width="20" height="20" rx="4" />
+    <rect x="140" y="140" width="20" height="20" rx="4" />
+    <rect x="160" y="100" width="20" height="20" rx="4" />
+    <rect x="40" y="100" width="20" height="20" rx="4" />
+    <rect x="60" y="120" width="20" height="20" rx="4" />
+    <rect x="120" y="180" width="20" height="20" rx="4" />
+    <rect x="160" y="180" width="20" height="20" rx="4" />
+    <rect x="180" y="160" width="20" height="20" rx="4" />
+  </g>
+</svg>

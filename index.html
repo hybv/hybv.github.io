@@ -1,10 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hello World</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hybv.github.io Experiments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark light;
+      --bg: #070910;
+      --card: rgba(18, 22, 36, 0.75);
+      --text: #f6f7ff;
+      --muted: #a5accd;
+      --accent: #7cf9c2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, rgba(124, 249, 194, 0.18), transparent 60%), var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: max(4rem, env(safe-area-inset-top)) 1.75rem 3rem;
+      gap: 2rem;
+    }
+
+    header {
+      text-align: center;
+      max-width: 640px;
+      display: grid;
+      gap: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 7vw, 3.8rem);
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      width: min(960px, 100%);
+    }
+
+    .card {
+      padding: 1.75rem;
+      border-radius: 26px;
+      background: var(--card);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
+      display: grid;
+      gap: 0.9rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-6px);
+      box-shadow: 0 50px 110px rgba(0, 0, 0, 0.55);
+    }
+
+    .card span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.75rem;
+    }
+
+    footer {
+      margin-top: auto;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (min-width: 720px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
 </head>
 <body>
-  Hello World
+  <header>
+    <h1>Mobile Web Experiments</h1>
+    <p>A collection of playful demos for GitHub Pages: scroll interactions and HDR color studies built for modern devices.</p>
+  </header>
+  <div class="grid">
+    <a class="card" href="scrolltest/">
+      <span>Prototype</span>
+      <h2>Scroll Test Playground</h2>
+      <p>Creative CSS scroll effects with parallax layers, sticky storytelling, and animated gradients tuned for touch.</p>
+    </a>
+    <a class="card" href="hdr-lab/">
+      <span>Color Lab</span>
+      <h2>HDR Effects Lab</h2>
+      <p>Test wide-gamut swatches, HDR gradients, and a neon QR prototype on capable displays.</p>
+    </a>
+  </div>
+  <footer>
+    <p>Deploys automatically with GitHub Pages.</p>
+  </footer>
 </body>
 </html>

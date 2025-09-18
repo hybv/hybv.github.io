@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HDR Effects Lab</title>
+  <meta name="theme-color" content="#05060a">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="tag">Mobile Lab</p>
+    <h1>HDR Experiment Playground</h1>
+    <p class="lede">Compare SDR and HDR-inspired colors, gradients, and the infamous bright QR test. View on an HDR capable device for the full effect.</p>
+    <a class="cta" href="../index.html">Back home</a>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Wide Gamut Swatches</h2>
+      <p>These chips use <code>color(display-p3)</code> values. Devices limited to sRGB will clamp them, while HDR screens should glow.</p>
+      <div class="swatches">
+        <div class="swatch" data-label="Solar Flare"></div>
+        <div class="swatch" data-label="Neo Magenta"></div>
+        <div class="swatch" data-label="Ion Green"></div>
+      </div>
+    </section>
+    <section class="card">
+      <h2>HDR Gradient</h2>
+      <p>The gradient below blends multiple wide gamut stops using <code>color-mix()</code>. Toggle between SDR and HDR references.</p>
+      <div class="gradient-panel">
+        <label class="toggle">
+          <input type="checkbox" id="mode-toggle" aria-label="Toggle HDR preview">
+          <span>HDR Preview</span>
+        </label>
+        <div class="gradient gradient--sdr" aria-hidden="true"></div>
+      </div>
+    </section>
+    <section class="card">
+      <h2>HDR QR Prototype</h2>
+      <p>The famous HDR QR code pushes contrast and saturation beyond SDR. This simplified recreation uses neon hues alongside deep blacks.</p>
+      <figure class="qr">
+        <img src="qr.svg" width="220" height="220" alt="Experimental HDR QR code">
+        <figcaption>Try scanning in a dark room on an HDR display.</figcaption>
+      </figure>
+    </section>
+  </main>
+  <footer>
+    <p>Tip: open the page in Safari on an iPhone 15 Pro or any HDR Android flagship and compare with an SDR device.</p>
+  </footer>
+  <script src="script.js" defer></script>
+</body>
+</html>

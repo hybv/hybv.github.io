@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg: #05060a;
+  --fg: #f7f8fe;
+  --muted: #a0a4c2;
+  --accent: #ffb347;
+  --shadow: 0 40px 120px rgba(10, 12, 20, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, rgba(255, 110, 60, 0.12), transparent 55%), var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: max(3rem, env(safe-area-inset-top)) 1.25rem 3.5rem;
+}
+
+.hero {
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 3.6rem);
+  margin: 0;
+}
+
+.lede {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.cta {
+  justify-self: center;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), color(display-p3 1 0.24 0));
+  color: #120709;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 24px 48px rgba(255, 179, 71, 0.35);
+}
+
+main {
+  display: grid;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+  width: min(100%, 960px);
+}
+
+.card {
+  padding: 1.75rem;
+  border-radius: 28px;
+  background: rgba(14, 16, 28, 0.75);
+  backdrop-filter: blur(26px);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1.4rem;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.swatch {
+  position: relative;
+  border-radius: 20px;
+  height: 120px;
+  background: linear-gradient(135deg, color(display-p3 1 0.3 0), color(display-p3 1 0.6 0.1));
+  box-shadow: 0 25px 45px rgba(255, 96, 48, 0.4);
+}
+
+.swatch:nth-child(2) {
+  background: linear-gradient(135deg, color(display-p3 0.8 0 0.9), color(display-p3 1 0.2 0.6));
+  box-shadow: 0 25px 45px rgba(255, 0, 170, 0.4);
+}
+
+.swatch:nth-child(3) {
+  background: linear-gradient(135deg, color(display-p3 0.1 1 0.4), color(display-p3 0.2 0.8 0.7));
+  box-shadow: 0 25px 45px rgba(0, 255, 170, 0.35);
+}
+
+.swatch::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: auto 1.2rem 1rem 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.gradient-panel {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.toggle input {
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  position: relative;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.toggle input::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, color(display-p3 1 0.5 0), color(display-p3 1 0.1 0.8));
+  transition: transform 0.25s ease;
+}
+
+.toggle input:checked {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.toggle input:checked::after {
+  transform: translateX(20px);
+}
+
+.gradient {
+  --stop-1: #ff6b1a;
+  --stop-2: #e62089;
+  --stop-3: #1cb5e0;
+  --stop-4: #6b2cff;
+  --glow: rgba(255, 188, 74, 0.75);
+  --flare: rgba(246, 72, 196, 0.35);
+  border-radius: 28px;
+  height: 220px;
+  background: linear-gradient(135deg, var(--stop-1), var(--stop-2) 35%, var(--stop-3) 65%, var(--stop-4));
+  filter: saturate(1.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient::before {
+  content: '';
+  position: absolute;
+  inset: 15% 20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow), transparent 65%);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+.gradient::after {
+  content: '';
+  position: absolute;
+  inset: 25% 40% 15% 15%;
+  border-radius: 36px;
+  background: var(--flare);
+  filter: blur(40px);
+}
+
+.gradient--sdr {
+  filter: saturate(1.05);
+}
+
+.gradient--hdr {
+  --stop-1: color(display-p3 1 0.35 0.05);
+  --stop-2: color(display-p3 0.95 0 0.55);
+  --stop-3: color(display-p3 0.2 0.92 1);
+  --stop-4: color(display-p3 0.6 0.2 1);
+  --glow: color(display-p3 1 0.8 0.2 / 0.88);
+  --flare: color(display-p3 1 0.2 0.75 / 0.55);
+  filter: saturate(1.35) brightness(1.05);
+}
+
+.qr {
+  justify-self: center;
+  text-align: center;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.qr img {
+  width: min(70vw, 220px);
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+@supports not (color: color(display-p3 1 0 0)) {
+  body::after {
+    content: 'Your display does not support wide-gamut colors. Expect more muted hues.';
+    position: fixed;
+    inset: auto 0 0 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: max(4rem, env(safe-area-inset-top)) 2.5rem 4.5rem;
+  }
+}
