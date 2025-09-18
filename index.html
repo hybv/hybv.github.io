@@ -10,14 +10,15 @@
   <style>
     :root {
       color-scheme: dark light;
-      --bg: #070910;
-      --card: rgba(18, 22, 36, 0.75);
+      --bg: #05060b;
+      --bg-alt: #101321;
+      --card: rgba(17, 20, 31, 0.82);
       --text: #f6f7ff;
       --muted: #a5accd;
       --accent: #7cf9c2;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
@@ -25,13 +26,65 @@
       margin: 0;
       min-height: 100vh;
       font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, rgba(124, 249, 194, 0.18), transparent 60%), var(--bg);
       color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: max(4rem, env(safe-area-inset-top)) 1.75rem 3rem;
+      padding: clamp(3.5rem, 8vw, 5rem) 1.5rem 3rem;
       gap: 2rem;
+      background: radial-gradient(circle at top, rgba(124, 249, 194, 0.18), transparent 55%) var(--bg);
+      overflow-x: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -40vmax;
+      z-index: -2;
+      background: conic-gradient(from 120deg, rgba(124, 249, 194, 0.16), rgba(124, 249, 194, 0), rgba(92, 95, 255, 0.2), rgba(124, 249, 194, 0.12));
+      animation: drift 18s ease-in-out infinite;
+      opacity: 0.9;
+      transform: translate3d(0, 0, 0);
+    }
+
+    body::after {
+      z-index: -3;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 60%),
+        radial-gradient(circle at 30% 20%, rgba(124, 249, 194, 0.15), transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(92, 95, 255, 0.2), transparent 65%),
+        var(--bg-alt);
+      animation: pulse 26s ease-in-out infinite;
+      opacity: 0.75;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: rotate(0deg) scale(1.05);
+      }
+      50% {
+        transform: rotate(6deg) scale(1.08);
+      }
+      100% {
+        transform: rotate(-4deg) scale(1.04);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      40% {
+        transform: scale(1.05) translate3d(0, -1.5%, 0);
+        opacity: 0.85;
+      }
+      70% {
+        transform: scale(0.98) translate3d(0, 1%, 0);
+        opacity: 0.65;
+      }
     }
 
     header {
@@ -43,7 +96,7 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(2.8rem, 7vw, 3.8rem);
+      font-size: clamp(2.5rem, 8vw, 3.8rem);
     }
 
     p {
@@ -56,25 +109,27 @@
       display: grid;
       gap: 1.5rem;
       width: min(960px, 100%);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 
     .card {
-      padding: 1.75rem;
-      border-radius: 26px;
+      padding: clamp(1.4rem, 3vw, 1.9rem);
+      border-radius: 24px;
       background: var(--card);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(124, 249, 194, 0.05);
       display: grid;
       gap: 0.9rem;
       text-decoration: none;
       color: inherit;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
     .card:hover,
     .card:focus-visible {
       transform: translateY(-6px);
-      box-shadow: 0 50px 110px rgba(0, 0, 0, 0.55);
+      border-color: rgba(124, 249, 194, 0.3);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
     }
 
     .card span {
@@ -90,7 +145,7 @@
 
     .card h2 {
       margin: 0;
-      font-size: 1.75rem;
+      font-size: clamp(1.35rem, 3vw, 1.75rem);
     }
 
     footer {
@@ -100,9 +155,14 @@
       text-align: center;
     }
 
-    @media (min-width: 720px) {
-      .grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    @media (prefers-reduced-motion: reduce) {
+      body::before,
+      body::after {
+        animation: none;
+      }
+
+      .card {
+        transition: none;
       }
     }
   </style>
@@ -110,9 +170,9 @@
 <body>
   <header>
     <h1>Mobile Web Experiments</h1>
-    <p>A collection of playful demos for GitHub Pages: scroll interactions and HDR color studies built for modern devices.</p>
+    <p>Playful prototypes for modern browsers: scroll physics, HDR color labs, and installable PWAs built to shine on phones first.</p>
   </header>
-  <div class="grid">
+  <main class="grid" aria-label="Featured experiments">
     <a class="card" href="scrolltest/">
       <span>Prototype</span>
       <h2>Scroll Test Playground</h2>
@@ -123,7 +183,12 @@
       <h2>HDR Effects Lab</h2>
       <p>Test wide-gamut swatches, HDR gradients, and a neon QR prototype on capable displays.</p>
     </a>
-  </div>
+    <a class="card" href="ios-pwa/">
+      <span>Installable</span>
+      <h2>iOS PWA Shell</h2>
+      <p>Experiment with app-like chrome, offline hints, and icon treatments tailored for iOS home screens.</p>
+    </a>
+  </main>
   <footer>
     <p>Deploys automatically with GitHub Pages.</p>
   </footer>
