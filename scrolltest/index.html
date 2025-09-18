@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scroll Experiments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress"></div>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Interactive Demo</p>
+      <h1>Creative Mobile Scroll Effects</h1>
+      <p class="lede">Swipe through to explore layered parallax, sticky storytelling, and color drenched reveals built entirely with modern CSS.</p>
+      <a class="cta" href="#snap-tour">Start the tour</a>
+    </div>
+  </header>
+  <main id="snap-tour" class="snap">
+    <section class="panel panel--parallax">
+      <div class="panel__overlay">
+        <h2>Parallax Layers</h2>
+        <p>Foreground cards glide past dramatic backgrounds as you scroll. Each layer is timed to different speeds using transforms.</p>
+      </div>
+    </section>
+    <section class="panel panel--story">
+      <div class="panel__copy">
+        <h2>Sticky Storytelling</h2>
+        <p>The copy stays put while the scenery morphs underneath thanks to <code>position: sticky</code>. Perfect for product reveals.</p>
+      </div>
+      <div class="panel__scenes">
+        <div class="scene scene--one">Dream</div>
+        <div class="scene scene--two">Build</div>
+        <div class="scene scene--three">Launch</div>
+      </div>
+    </section>
+    <section class="panel panel--color">
+      <div class="panel__content">
+        <h2>Color Reveals</h2>
+        <p>Layered gradients wash over the typography as the scroll progresses. Try dragging slowly to feel the subtle animations.</p>
+      </div>
+    </section>
+    <section class="panel panel--end">
+      <div class="panel__content">
+        <h2>Made for thumbs</h2>
+        <p>Every interaction is within thumb reach, and large touch targets make the prototype feel like a polished mobile app.</p>
+        <a class="cta" href="../index.html">Back home</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>CSS only. Tip: open DevTools to inspect custom properties that drive the animation.</p>
+  </footer>
+  <script src="script.js" defer></script>
+</body>
+</html>
